@@ -1,4 +1,4 @@
-# Super GLB Viewer
+# Super GLB Viewer for VS Code
 
 A VS Code extension that lets you view GLB and GLTF 3D model files directly in the editor.
 

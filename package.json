@@ -1,0 +1,44 @@
+{
+  "name": "super-glb-viewer",
+  "displayName": "Super GLB Viewer",
+  "description": "View GLB 3D model files directly in VS Code",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "superGlbViewer.glbPreview",
+        "displayName": "GLB Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.glb"
+          },
+          {
+            "filenamePattern": "*.gltf"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}

@@ -1,4 +1,4 @@
-import { C as t, a as i } from "./BabylonAdapter-Coo7aqI5.js";
+import { C as t, a as i } from "./BabylonAdapter-Gi-6Ojkb.js";
 class l {
   /**
    * Creates a new instance of the PBRMaterialLoadingAdapter.

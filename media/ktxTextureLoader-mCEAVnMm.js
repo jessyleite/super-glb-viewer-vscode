@@ -1,4 +1,4 @@
-import { K as o, g as p, h as g } from "./BabylonAdapter-Coo7aqI5.js";
+import { K as o, g as p, h as g } from "./BabylonAdapter-Gi-6Ojkb.js";
 function f(l) {
   switch (l) {
     case 35916:

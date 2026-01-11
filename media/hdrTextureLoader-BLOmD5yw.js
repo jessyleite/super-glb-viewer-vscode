@@ -1,4 +1,4 @@
-import { e as p, f as c } from "./BabylonAdapter-Coo7aqI5.js";
+import { e as p, f as c } from "./BabylonAdapter-Gi-6Ojkb.js";
 class h {
   constructor() {
     this.supportCascades = !1;

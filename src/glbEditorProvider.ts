@@ -43,6 +43,19 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
       webviewPanel.webview,
       document.uri
     );
+
+    // Handle messages from the webview (e.g. file export/save)
+    webviewPanel.webview.onDidReceiveMessage(async (message) => {
+      if (message.type === 'saveFile') {
+        const { data } = message;
+        const sourceDir = vscode.Uri.joinPath(document.uri, '..');
+        const baseName = document.uri.path.split('/').pop()!.replace(/\.(glb|gltf)$/i, '');
+        const ext = document.uri.path.endsWith('.gltf') ? '.gltf' : '.glb';
+        const outputUri = vscode.Uri.joinPath(sourceDir, `${baseName}_optimized${ext}`);
+        await vscode.workspace.fs.writeFile(outputUri, new Uint8Array(data));
+        vscode.window.showInformationMessage(`Saved to ${outputUri.fsPath}`);
+      }
+    });
   }
 
   private async getHtmlForWebview(
@@ -65,6 +78,7 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
     const fileData = await vscode.workspace.fs.readFile(documentUri);
     const base64 = Buffer.from(fileData).toString('base64');
     const dataUrl = `data:model/gltf-binary;base64,${base64}`;
+    const fileName = documentUri.path.split('/').pop() || 'model.glb';
 
     // Generate a nonce for CSP
     const nonce = getNonce();
@@ -81,6 +95,36 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
     window.global = window;
     // Base URI for loading assets (vendor, HDR, etc.)
     window.__PUBLIC_BASE_URI__ = '${mediaBaseUri}';
+
+    // VS Code API for messaging between webview and extension
+    const vscodeApi = acquireVsCodeApi();
+
+    // Polyfill showSaveFilePicker — not available in VS Code webviews.
+    // The viewer library calls this to export files. We intercept the blob
+    // and send it to the extension host which uses VS Code's native save dialog.
+    window.showSaveFilePicker = async function(options) {
+      const suggestedName = (options && options.suggestedName) || 'model.glb';
+      let savedBlob = null;
+      return {
+        createWritable: function() {
+          return {
+            write: async function(blob) {
+              savedBlob = blob;
+            },
+            close: async function() {
+              if (savedBlob) {
+                const arrayBuffer = await savedBlob.arrayBuffer();
+                vscodeApi.postMessage({
+                  type: 'saveFile',
+                  fileName: suggestedName,
+                  data: Array.from(new Uint8Array(arrayBuffer)),
+                });
+              }
+            }
+          };
+        }
+      };
+    };
   </script>
   <link rel="stylesheet" href="${styleUri}">
   <title>GLB Viewer</title>
@@ -102,12 +146,15 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
     const glbDataUrl = '${dataUrl}';
     const root = document.getElementById('root');
 
-    // Render the App component with initialModels and libMode
+    // Render the App component with initialModels and params
     const reactRoot = ReactDOM.createRoot(root);
     reactRoot.render(
       React.createElement(App, {
-        initialModels: [glbDataUrl],
-        libMode: true
+        initialModels: [{ url: glbDataUrl, name: '${fileName}' }],
+        params: {
+          displayFooterLinks: false,
+          enableAddModels: false,
+        }
       })
     );
   </script>

@@ -2,8 +2,33 @@
   "name": "super-glb-viewer",
   "displayName": "Super GLB Viewer",
   "description": "View GLB 3D model files directly in VS Code",
-  "version": "0.0.2",
-  "publisher": "your-publisher-name",
+  "version": "0.0.8",
+  "publisher": "JessyLeite",
+  "author": {
+    "name": "Jessy Leite",
+    "url": "https://jessyleite.dev"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0A0A0A",
+    "theme": "dark"
+  },
+  "homepage": "https://jessyleite.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jessyleite/super-glb-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/jessyleite/super-glb-viewer-vscode/issues"
+  },
+  "keywords": [
+    "glb",
+    "gltf",
+    "3d",
+    "viewer",
+    "model"
+  ],
   "engines": {
     "vscode": "^1.80.0"
   },

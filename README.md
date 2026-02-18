@@ -1,67 +1,55 @@
 # Super GLB Viewer for VS Code
 
-A VS Code extension that lets you view GLB and GLTF 3D model files directly in the editor.
+View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engine viewer supporting Three.js, Babylon.js, and PlayCanvas.
 
-## Getting the Viewer Library
+<!-- ![Super GLB Viewer Screenshot](images/screenshot.png) -->
 
-This extension uses [super-glb-viewer](https://github.com/jessyleite/super-glb-viewer). You need to build and copy the library files:
+## Features
 
-1. Clone and build the library:
-   ```bash
-   git clone https://github.com/jessyleite/super-glb-viewer
-   cd super-glb-viewer
-   deno task build:lib:bundled
-   ```
+- **Open GLB/GLTF files** directly in VS Code as a custom editor
+- **Multiple rendering engines** — switch between Three.js, Babylon.js, and PlayCanvas
+- **WebGL2 and WebGPU** backends
+- **Animations** — play/pause, seek, track selection, and speed control
+- **Blend shapes / morph targets** with adjustable weights
+- **Inspector** — browse the scene graph, edit materials (PBR, clearcoat, transmission, sheen, volume), transforms, and lights
+- **Model comparison** — split view with synchronized camera and stat deltas
+- **Optimization** — mesh compression and KTX2 texture compression
+- **Export** — download your model (including edits) as GLB
+- **Environment lighting** — load custom HDR files, adjust exposure and tonemapping
+- **Stats panel** — vertices, triangles, meshes, materials, textures, and VRAM usage
+- **Fully offline** — all processing happens locally, no data leaves your machine
 
-2. Copy the dist files to this extension's `media/` folder:
-   ```bash
-   cp -r dist/* /path/to/super-glb-viewer-vscode/media/
-   ```
+## Supported Formats
 
-   This should include:
-   - `super-glb-viewer.es.js` - Main ES module
-   - `super-glb-viewer.css` - Styles
-   - Various chunk files (adapters, loaders, etc.)
-   - `vendor/` folder (Draco decoder, etc.) if needed
-   - HDR environment files if needed
+| Format | Extension | Notes |
+|--------|-----------|-------|
+| GLB | `.glb` | Self-contained binary glTF |
+| GLTF | `.gltf` | JSON-based glTF |
 
-## Try the Extension
+## Usage
 
-### From Source
+1. Install the extension
+2. Open any `.glb` or `.gltf` file in VS Code
+3. The 3D viewer opens automatically
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Camera Controls
 
-2. Compile the extension:
-   ```bash
-   npm run compile
-   ```
+| Action | Mouse | Keyboard |
+|--------|-------|----------|
+| Orbit | Left drag | Arrow keys / WASD |
+| Pan | Right drag | — |
+| Zoom | Scroll wheel | `+` / `-` |
 
-3. Open this folder in VS Code and press `F5` to launch the Extension Development Host or use `Ctrl+Shift+P` to open the Command Palette and run `Debug: Start Debugging`.
+### Switching Engines
 
-4. In the new VS Code window, open any `.glb` or `.gltf` file
+Use the engine selector in the viewer toolbar to switch between Three.js, Babylon.js, and PlayCanvas. Your camera position, environment, and settings are preserved across switches.
 
-5. You can run `Developer: Open Webview Developer Tools` to open the webview developer tools.
+## Requirements
 
-### Install as VSIX
+- VS Code 1.80.0 or later
 
-1. Package the extension:
-   ```bash
-   npm run package
-   ```
+## License
 
-2. Install the generated `.vsix` file:
-   - Open VS Code
-   - Go to Extensions (Ctrl+Shift+X)
-   - Click `...` menu → "Install from VSIX..."
-   - Select the generated `.vsix` file
+This extension is licensed under the [MIT License](LICENSE).
 
-## Development
-
-```bash
-npm run compile   # Build once
-npm run watch     # Watch mode
-npm run package   # Create .vsix
-```
+The embedded viewer library ([super-glb-viewer](https://github.com/jessyleite/super-glb-viewer)) is separately licensed — see `media/LICENSE` for details.

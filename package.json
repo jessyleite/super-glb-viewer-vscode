@@ -2,7 +2,7 @@
   "name": "super-glb-viewer",
   "displayName": "Super GLB Viewer",
   "description": "View GLB 3D model files directly in VS Code",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publisher": "JessyLeite",
   "author": {
     "name": "Jessy Leite",

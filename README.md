@@ -15,9 +15,10 @@ View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engi
 - **Model comparison** — split view with synchronized camera and stat deltas
 - **Optimization** — mesh compression and KTX2 texture compression
 - **Export** — download your model (including edits) as GLB
+- **Share** — generate a shareable link to your model
 - **Environment lighting** — load custom HDR files, adjust exposure and tonemapping
 - **Stats panel** — vertices, triangles, meshes, materials, textures, and VRAM usage
-- **Fully offline** — all processing happens locally, no data leaves your machine
+- **Fully offline** — all processing happens locally, no data leaves your machine (except when using the Share feature, which uploads your model to generate a link)
 
 ## Supported Formats
 

@@ -23,13 +23,12 @@ View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engi
 
 | Format | Extension | Notes |
 |--------|-----------|-------|
-| GLB | `.glb` | Self-contained binary glTF |
-| GLTF | `.gltf` | JSON-based glTF |
+| GLB | `.glb` | Self-contained binary glTF
 
 ## Usage
 
 1. Install the extension
-2. Open any `.glb` or `.gltf` file in VS Code
+2. Open any `.glb` file in VS Code
 3. The 3D viewer opens automatically
 
 ### Camera Controls

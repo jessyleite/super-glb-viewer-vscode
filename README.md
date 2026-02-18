@@ -2,7 +2,11 @@
 
 View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engine viewer supporting Three.js, Babylon.js, and PlayCanvas.
 
-<!-- ![Super GLB Viewer Screenshot](images/screenshot.png) -->
+<p>
+  <img src="1.png" width="32%" alt="View and Inspect your GLB files" />
+  <img src="3.png" width="32%" alt="Edit and compare your models" />
+  <img src="4.png" width="32%" alt="Choose your engine and your settings" />
+</p>
 
 ## Features
 

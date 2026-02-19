@@ -1,4 +1,4 @@
-import { S as t } from "./BabylonAdapter-BsjTUjco.js";
+import { S as t } from "./BabylonAdapter-DXDkMOqC.js";
 const e = "volumetricLightingRenderVolumePixelShader", i = `#include<sceneUboDeclaration>
 #include<meshUboDeclaration>
 uniform invViewProjection: mat4x4<f32>;uniform lightDir: vec3f; 

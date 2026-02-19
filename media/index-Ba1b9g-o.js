@@ -459,15 +459,15 @@ const Qg = {
 class gx {
   static adapters = {
     [Cr.THREE]: async () => {
-      const e = await import("./ThreeAdapter-8iOiFWI1.js");
+      const e = await import("./ThreeAdapter-C8bqX2NO.js");
       return new e.ThreeAdapter();
     },
     [Cr.BABYLON]: async () => {
-      const e = await import("./BabylonAdapter-BsjTUjco.js").then((t) => t.B);
+      const e = await import("./BabylonAdapter-DXDkMOqC.js").then((t) => t.B);
       return new e.BabylonAdapter();
     },
     [Cr.PLAYCANVAS]: async () => {
-      const e = await import("./PlayCanvasAdapter-wyTVxlYi.js");
+      const e = await import("./PlayCanvasAdapter-D6Iz9MZ3.js");
       return new e.PlayCanvasAdapter();
     }
   };
@@ -39626,7 +39626,7 @@ class F3 {
     if (!a) return null;
     const s = a.modifiedBlob ?? a.mainBlob;
     if (!s) return null;
-    const o = a.modifiedBlob ? void 0 : this.getBundle(e) ?? void 0, { optimizeModel: c } = await import("./ModelOptimizer-Ph0vzP-5.js"), u = await c(
+    const o = a.modifiedBlob ? void 0 : this.getBundle(e) ?? void 0, { optimizeModel: c } = await import("./ModelOptimizer-vnu2DDGt.js"), u = await c(
       s,
       {
         compressMeshes: !0,
@@ -40762,7 +40762,7 @@ const c9 = $.forwardRef(
       )
     ] });
   }
-), l9 = $.lazy(() => import("./index-ugKravz_.js").then((i) => ({ default: i.InspectorPanel })));
+), l9 = $.lazy(() => import("./index-BdyowGPd.js").then((i) => ({ default: i.InspectorPanel })));
 function u9({
   inspectingModel: i,
   loadData: e,
@@ -41073,7 +41073,7 @@ function x9({
     )
   ] });
 }
-const A9 = () => import("./index-724CYdI7.js").then((i) => i.InspectorAPI);
+const A9 = () => import("./index-CGNF3a1c.js").then((i) => i.InspectorAPI);
 class M9 {
   /**
    * Analyze a GLB/GLTF blob and extract stats, animations, and blend shapes
@@ -41391,7 +41391,8 @@ const S9 = $.forwardRef(function({ initialModels: e, params: t = {} }, a) {
           style: { width: `${E.percent}%` }
         }
       ) }),
-      /* @__PURE__ */ D.jsx("div", { className: "ui-progress-text", children: E.step })
+      /* @__PURE__ */ D.jsx("div", { className: "ui-progress-text", children: E.step }),
+      /* @__PURE__ */ D.jsx("div", { className: "ui-progress-note", children: "Meshes are compressed with MeshOpt and textures are converted to KTX2 (GPU-compressed). The file may be larger on disk but uses less VRAM at runtime." })
     ] })
   ] });
 }), tI = $.forwardRef(function(e, t) {
@@ -41744,8 +41745,8 @@ export {
   HC as ei,
   GC as ej,
   zC as ek,
-  D as el,
-  $ as em,
+  $ as el,
+  D as em,
   ST as en,
   XC as eo,
   qC as ep,

@@ -1,6 +1,6 @@
-import { F as XX, S as $X } from "./StatsManager-DTgMhP13.js";
-import { eh as Zs, eD as YX, eE as jX, eF as Cu, eG as qX, eH as Kt, eP as vA, eM as Xf, eN as KX, eI as la } from "./index-1fHvDm8K.js";
-import { n as ZX } from "./index-DU2q2Z5D.js";
+import { F as XX, S as $X } from "./StatsManager-Cbg0W9id.js";
+import { eh as Zs, eD as YX, eE as jX, eF as Cu, eG as qX, eH as Kt, eP as vA, eM as Xf, eN as KX, eI as la } from "./index-Ba1b9g-o.js";
+import { n as ZX } from "./index-BrOb6BJk.js";
 class sn {
   constructor() {
     this.hoverCursor = "", this.actions = [], this.isRecursive = !1, this.disposeWhenUnowned = !0;
@@ -50143,7 +50143,7 @@ function x6(n) {
   return kp.delete(n);
 }
 function n2(n, e) {
-  (e === "image/ktx" || e === "image/ktx2") && (n = ".ktx"), kp.has(n) || (n.endsWith(".ies") && No(".ies", async () => await import("./iesTextureLoader-BYuwwIQg.js").then((i) => new i._IESTextureLoader())), n.endsWith(".dds") && No(".dds", async () => await import("./ddsTextureLoader-D811XdGp.js").then((i) => new i._DDSTextureLoader())), n.endsWith(".basis") && No(".basis", async () => await import("./basisTextureLoader-B58dLDf5.js").then((i) => new i._BasisTextureLoader())), n.endsWith(".env") && No(".env", async () => await import("./envTextureLoader-COeJo0JN.js").then((i) => new i._ENVTextureLoader())), n.endsWith(".hdr") && No(".hdr", async () => await import("./hdrTextureLoader-Bf5ohau2.js").then((i) => new i._HDRTextureLoader())), (n.endsWith(".ktx") || n.endsWith(".ktx2")) && (No(".ktx", async () => await import("./ktxTextureLoader-36qRCloG.js").then((i) => new i._KTXTextureLoader())), No(".ktx2", async () => await import("./ktxTextureLoader-36qRCloG.js").then((i) => new i._KTXTextureLoader()))), n.endsWith(".tga") && No(".tga", async () => await import("./tgaTextureLoader-B2jjHtLf.js").then((i) => new i._TGATextureLoader())), n.endsWith(".exr") && No(".exr", async () => await Promise.resolve().then(() => bne).then((i) => new i._ExrTextureLoader())));
+  (e === "image/ktx" || e === "image/ktx2") && (n = ".ktx"), kp.has(n) || (n.endsWith(".ies") && No(".ies", async () => await import("./iesTextureLoader-BMZjbl4c.js").then((i) => new i._IESTextureLoader())), n.endsWith(".dds") && No(".dds", async () => await import("./ddsTextureLoader-CZmh6XKL.js").then((i) => new i._DDSTextureLoader())), n.endsWith(".basis") && No(".basis", async () => await import("./basisTextureLoader-Bln96aP7.js").then((i) => new i._BasisTextureLoader())), n.endsWith(".env") && No(".env", async () => await import("./envTextureLoader-uaQn_TwI.js").then((i) => new i._ENVTextureLoader())), n.endsWith(".hdr") && No(".hdr", async () => await import("./hdrTextureLoader-CP_kvQ55.js").then((i) => new i._HDRTextureLoader())), (n.endsWith(".ktx") || n.endsWith(".ktx2")) && (No(".ktx", async () => await import("./ktxTextureLoader-B5iYdmM2.js").then((i) => new i._KTXTextureLoader())), No(".ktx2", async () => await import("./ktxTextureLoader-B5iYdmM2.js").then((i) => new i._KTXTextureLoader()))), n.endsWith(".tga") && No(".tga", async () => await import("./tgaTextureLoader-CGg4SGVu.js").then((i) => new i._TGATextureLoader())), n.endsWith(".exr") && No(".exr", async () => await Promise.resolve().then(() => bne).then((i) => new i._ExrTextureLoader())));
   const t = kp.get(n);
   return t ? Promise.resolve(t(e)) : null;
 }
@@ -68791,7 +68791,7 @@ class so {
       uniformNames: [],
       shaderLanguage: this._shaderLanguage,
       extraInitializationsAsync: async () => {
-        this._shaderLanguage === 1 ? await import("./oitFinalSimpleBlend.fragment-DFsUiF1Y.js") : await import("./oitFinalSimpleBlend.fragment-CZWc_aN1.js");
+        this._shaderLanguage === 1 ? await import("./oitFinalSimpleBlend.fragment-CMUr7xze.js") : await import("./oitFinalSimpleBlend.fragment-CtOFoAGV.js");
       }
     }), this._effectRenderer = new wc(this._engine);
   }
@@ -82488,7 +82488,7 @@ function yq(n) {
     case "FlowGraphArrayIndexBlock":
       return async () => (await Promise.resolve().then(() => AK)).FlowGraphArrayIndexBlock;
     case "FlowGraphCodeExecutionBlock":
-      return async () => (await import("./flowGraphCodeExecutionBlock-DNePL5DG.js")).FlowGraphCodeExecutionBlock;
+      return async () => (await import("./flowGraphCodeExecutionBlock-D-dqfxYM.js")).FlowGraphCodeExecutionBlock;
     case "FlowGraphIndexOfBlock":
       return async () => (await Promise.resolve().then(() => IK)).FlowGraphIndexOfBlock;
     case "FlowGraphFunctionReference":
@@ -94547,7 +94547,7 @@ v([
 F("BABYLON.NodeRenderGraphSharpenPostProcessBlock", YC);
 class Mn extends vt {
   _gatherImports(e, t) {
-    e ? (this._webGPUReady = !0, t.push(import("./screenSpaceCurvature.fragment-C7pMHPW9.js"))) : t.push(Promise.resolve().then(() => nfe));
+    e ? (this._webGPUReady = !0, t.push(import("./screenSpaceCurvature.fragment-DcAysJqC.js"))) : t.push(Promise.resolve().then(() => nfe));
   }
   /**
    * Constructs a new screen space curvature post process
@@ -97029,7 +97029,7 @@ v([
 F("BABYLON.NodeRenderGraphTonemapPostProcessBlock", qC);
 class vZ extends bo {
   _gatherImports(e, t) {
-    e ? (this._webGPUReady = !0, t.push(Promise.all([Promise.resolve().then(() => Gy), import("./volumetricLightingBlendVolume.fragment-BGZsARup.js")]))) : t.push(Promise.all([Promise.resolve().then(() => vg), import("./volumetricLightingBlendVolume.fragment-BgTALHpZ.js")])), super._gatherImports(e, t);
+    e ? (this._webGPUReady = !0, t.push(Promise.all([Promise.resolve().then(() => Gy), import("./volumetricLightingBlendVolume.fragment-lHwQL7pb.js")]))) : t.push(Promise.all([Promise.resolve().then(() => vg), import("./volumetricLightingBlendVolume.fragment-C-3GgbjA.js")])), super._gatherImports(e, t);
   }
   constructor(e, t = null, i = !1, r) {
     super(e, t, {
@@ -97127,7 +97127,7 @@ class B0 extends _s {
   }
   // eslint-disable-next-line @typescript-eslint/promise-function-async, no-restricted-syntax
   initAsync() {
-    return this._frameGraph.engine.isWebGPU ? Promise.all([import("./volumetricLightingRenderVolume.vertex-CHvel6eO.js"), import("./volumetricLightingRenderVolume.fragment-DOESmHH0.js")]) : Promise.all([import("./volumetricLightingRenderVolume.vertex-BriVNELl.js"), import("./volumetricLightingRenderVolume.fragment-BMhzd1up.js")]);
+    return this._frameGraph.engine.isWebGPU ? Promise.all([import("./volumetricLightingRenderVolume.vertex-DTKeJobv.js"), import("./volumetricLightingRenderVolume.fragment-D1H3oUNY.js")]) : Promise.all([import("./volumetricLightingRenderVolume.vertex-sSlSOCiS.js"), import("./volumetricLightingRenderVolume.fragment-CTWQpGLh.js")]);
   }
   isReady() {
     return this._renderLightingVolumeMaterial.isReady() && this._clearLightingVolumeTextureTask.isReady() && this._renderLightingVolumeMaterial.isReady() && this._blendLightingVolumeTask.isReady();
@@ -199802,7 +199802,7 @@ class st {
         adapterClass: (await import("./openpbrMaterialLoadingAdapter-sE7z_NZ1.js")).OpenPBRMaterialLoadingAdapter
       } : this._pbrMaterialImpl = {
         materialClass: (await Promise.resolve().then(() => p9)).PBRMaterial,
-        adapterClass: (await import("./pbrMaterialLoadingAdapter-80zFL-eM.js")).PBRMaterialLoadingAdapter
+        adapterClass: (await import("./pbrMaterialLoadingAdapter-CzpFj9H0.js")).PBRMaterialLoadingAdapter
       });
       const s = `${Js[Js.LOADING]} => ${Js[Js.READY]}`, a = `${Js[Js.LOADING]} => ${Js[Js.COMPLETE]}`;
       this._parent._startPerformanceCounter(s), this._parent._startPerformanceCounter(a), this._parent._setState(Js.LOADING), this._extensionsOnLoading();
@@ -205337,7 +205337,7 @@ function $Se(n) {
     getTarget: (e) => e._babylonAnimationGroup
   });
 }
-Cq(Zd, "FlowGraphGLTFDataProvider", async () => (await import("./flowGraphGLTFDataProvider-LkE-m3sj.js")).FlowGraphGLTFDataProvider);
+Cq(Zd, "FlowGraphGLTFDataProvider", async () => (await import("./flowGraphGLTFDataProvider-C3U1ZfVb.js")).FlowGraphGLTFDataProvider);
 Ht(Zd);
 $t(Zd, !0, (n) => new XSe(n));
 const Hm = "KHR_node_visibility";

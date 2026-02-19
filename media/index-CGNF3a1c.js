@@ -1,6 +1,6 @@
-import { cL as $, cu as E, a2 as W } from "./index-1fHvDm8K.js";
-import { i as z, e as Y, f as J, g as G, h as X, j as q } from "./gltfIO-Ce7kfg7O.js";
-import { n as Q } from "./index-DU2q2Z5D.js";
+import { cL as $, cu as A, a2 as W } from "./index-Ba1b9g-o.js";
+import { i as z, e as Y, f as J, g as G, h as X, j as q } from "./gltfIO-hi-8ve8v.js";
+import { n as Q } from "./index-BrOb6BJk.js";
 var Z = /* @__PURE__ */ ((s) => (s.Clearcoat = "KHR_materials_clearcoat", s.Transmission = "KHR_materials_transmission", s.IOR = "KHR_materials_ior", s.Sheen = "KHR_materials_sheen", s.Volume = "KHR_materials_volume", s))(Z || {}), x = /* @__PURE__ */ ((s) => (s.Scene = "scene", s.Node = "node", s.Armature = "armature", s.Bone = "bone", s.Mesh = "mesh", s.Material = "material", s.Light = "light", s.Camera = "camera", s))(x || {});
 const ee = {
   // GPU-compressed formats - Block compression
@@ -42,13 +42,13 @@ function te(s) {
   return 4;
 }
 function se(s) {
-  const e = s.width ?? 1024, n = s.height ?? 1024, t = e * n, a = 1.333, r = te(s.mimeType);
-  return Math.ceil(t * r * a);
+  const e = s.width ?? 1024, n = s.height ?? 1024, t = e * n, r = 1.333, a = te(s.mimeType);
+  return Math.ceil(t * a * r);
 }
-function me(s) {
+function ue(s) {
   return s < 1024 ? `${s.toFixed(2)} B` : s < 1024 * 1024 ? `${(s / 1024).toFixed(2)} KB` : `${(s / (1024 * 1024)).toFixed(2)} MB`;
 }
-const I = {
+const P = {
   5120: 1,
   // BYTE
   5121: 1,
@@ -61,7 +61,7 @@ const I = {
   // UNSIGNED_INT
   5126: 4
   // FLOAT
-}, ae = {
+}, ne = {
   SCALAR: 1,
   VEC2: 2,
   VEC3: 3,
@@ -70,26 +70,26 @@ const I = {
   MAT3: 9,
   MAT4: 16
 };
-function ne(s) {
+function re(s) {
   let e = 0;
   for (const n of s.listPrimitives()) {
     const t = n.getIndices();
     if (t) {
-      const r = I[t.getComponentType()] ?? 4;
-      e += t.getCount() * r;
+      const a = P[t.getComponentType()] ?? 4;
+      e += t.getCount() * a;
     }
-    const a = n.listSemantics();
-    for (const r of a) {
-      const h = n.getAttribute(r);
-      if (h) {
-        const o = I[h.getComponentType()] ?? 4, l = ae[h.getType()] ?? 1;
-        e += h.getCount() * l * o;
+    const r = n.listSemantics();
+    for (const a of r) {
+      const m = n.getAttribute(a);
+      if (m) {
+        const o = P[m.getComponentType()] ?? 4, i = ne[m.getType()] ?? 1;
+        e += m.getCount() * i * o;
       }
     }
   }
   return e;
 }
-const re = /* @__PURE__ */ new Set([
+const ae = /* @__PURE__ */ new Set([
   "image/png",
   "image/jpeg",
   "image/gif",
@@ -99,11 +99,11 @@ const re = /* @__PURE__ */ new Set([
   "image/bmp"
 ]);
 function oe(s) {
-  return re.has(s);
+  return ae.has(s);
 }
 const K = new $(), M = new W();
 function U(s, e, n, t) {
-  const a = e ?? /* @__PURE__ */ new Set(), r = n ?? /* @__PURE__ */ new Set(), h = t ?? /* @__PURE__ */ new Set(), o = {
+  const r = e ?? /* @__PURE__ */ new Set(), a = n ?? /* @__PURE__ */ new Set(), m = t ?? /* @__PURE__ */ new Set(), o = {
     meshes: 0,
     materials: 0,
     textures: 0,
@@ -112,23 +112,23 @@ function U(s, e, n, t) {
     geometryVRAM: 0
   };
   if (s.type === x.Mesh) {
-    const l = s.gltfRef;
-    a.has(l) || (a.add(l), o.meshes = 1, o.triangles = s.metadata?.triangleCount || 0, o.geometryVRAM = s.metadata?.geometryVRAM || 0);
+    const i = s.gltfRef;
+    r.has(i) || (r.add(i), o.meshes = 1, o.triangles = s.metadata?.triangleCount || 0, o.geometryVRAM = s.metadata?.geometryVRAM || 0);
   } else if (s.type === x.Material) {
-    const l = s.gltfRef;
-    if (!r.has(l)) {
-      r.add(l), o.materials = 1;
-      const m = s.metadata?.textures;
-      if (m)
-        for (const g of m) {
-          const c = g.gltfRef;
-          c && !h.has(c) ? (h.add(c), o.textures += 1, o.textureVRAM += g.vram) : c || (o.textures += 1, o.textureVRAM += g.vram);
+    const i = s.gltfRef;
+    if (!a.has(i)) {
+      a.add(i), o.materials = 1;
+      const l = s.metadata?.textures;
+      if (l)
+        for (const h of l) {
+          const c = h.gltfRef;
+          c && !m.has(c) ? (m.add(c), o.textures += 1, o.textureVRAM += h.vram) : c || (o.textures += 1, o.textureVRAM += h.vram);
         }
     }
   }
-  for (const l of s.children) {
-    const m = U(l, a, r, h);
-    o.meshes += m.meshes, o.materials += m.materials, o.textures += m.textures, o.triangles += m.triangles, o.textureVRAM += m.textureVRAM, o.geometryVRAM += m.geometryVRAM;
+  for (const i of s.children) {
+    const l = U(i, r, a, m);
+    o.meshes += l.meshes, o.materials += l.materials, o.textures += l.textures, o.triangles += l.triangles, o.textureVRAM += l.textureVRAM, o.geometryVRAM += l.geometryVRAM;
   }
   return s.metadata = { ...s.metadata, stats: o }, o;
 }
@@ -136,55 +136,55 @@ function H(s, e) {
   const n = s.getRoot(), t = n.listScenes();
   if (t.length === 0)
     return null;
-  const a = /* @__PURE__ */ new Set(), r = /* @__PURE__ */ new Set();
-  for (const i of n.listSkins()) {
-    for (const b of i.listJoints())
-      a.add(b);
-    const p = i.getSkeleton();
-    p && r.add(p);
+  const r = /* @__PURE__ */ new Set(), a = /* @__PURE__ */ new Set();
+  for (const u of n.listSkins()) {
+    for (const S of u.listJoints())
+      r.add(S);
+    const p = u.getSkeleton();
+    p && a.add(p);
   }
-  let h = 0;
-  const o = () => `node-${h++}`, l = (i) => {
+  let m = 0;
+  const o = () => `node-${m++}`, i = (u) => {
     const p = [];
-    let b = x.Node;
-    r.has(i) ? b = x.Armature : a.has(i) && (b = x.Bone);
-    const f = i.getName();
-    let u;
+    let S = x.Node;
+    a.has(u) ? S = x.Armature : r.has(u) && (S = x.Bone);
+    const f = u.getName();
+    let g;
     if (f)
-      u = f;
+      g = f;
     else
-      switch (b) {
+      switch (S) {
         case x.Armature:
-          u = "Armature";
+          g = "Armature";
           break;
         case x.Bone:
-          u = "Bone";
+          g = "Bone";
           break;
         default:
-          u = "Node";
+          g = "Node";
       }
-    for (const _ of i.listChildren())
-      p.push(l(_));
-    const S = i.getMesh();
-    if (S) {
+    for (const _ of u.listChildren())
+      p.push(i(_));
+    const b = u.getMesh();
+    if (b) {
       let _ = 0;
-      for (const A of S.listPrimitives()) {
-        const d = A.getIndices();
+      for (const E of b.listPrimitives()) {
+        const d = E.getIndices();
         d && (_ += d.getCount() / 3);
       }
-      const O = ne(S), T = {
+      const O = re(b), N = {
         id: o(),
-        name: S.getName() || "Mesh",
+        name: b.getName() || "Mesh",
         type: x.Mesh,
         children: [],
-        gltfRef: S,
+        gltfRef: b,
         metadata: { triangleCount: _, geometryVRAM: O }
-      }, B = /* @__PURE__ */ new Set();
-      for (const A of S.listPrimitives()) {
-        const d = A.getMaterial();
-        if (d && !B.has(d)) {
-          B.add(d);
-          const N = [], L = [
+      }, T = /* @__PURE__ */ new Set();
+      for (const E of b.listPrimitives()) {
+        const d = E.getMaterial();
+        if (d && !T.has(d)) {
+          T.add(d);
+          const B = [], L = [
             { texture: d.getBaseColorTexture(), slot: "baseColor" },
             { texture: d.getNormalTexture(), slot: "normal" },
             { texture: d.getMetallicRoughnessTexture(), slot: "metallicRoughness" },
@@ -203,26 +203,26 @@ function H(s, e) {
                 gltfRef: y
               };
               C.vram = se(C);
-              const P = y.getImage();
-              if (P && k && oe(k)) {
-                const j = new Blob([P], { type: k });
+              const I = y.getImage();
+              if (I && k && oe(k)) {
+                const j = new Blob([I], { type: k });
                 C.previewUrl = URL.createObjectURL(j), e.push(C.previewUrl);
               }
-              N.push(C);
+              B.push(C);
             }
-          T.children.push({
+          N.children.push({
             id: o(),
             name: d.getName() || "Material",
             type: x.Material,
             children: [],
             gltfRef: d,
-            metadata: { textures: N }
+            metadata: { textures: B }
           });
         }
       }
-      p.push(T);
+      p.push(N);
     }
-    const R = i.getExtension("KHR_lights_punctual");
+    const R = u.getExtension("KHR_lights_punctual");
     R && p.push({
       id: o(),
       name: R.getName() || "Light",
@@ -230,7 +230,7 @@ function H(s, e) {
       children: [],
       gltfRef: R
     });
-    const w = i.getCamera();
+    const w = u.getCamera();
     return w && p.push({
       id: o(),
       name: w.getName() || "Camera",
@@ -239,24 +239,24 @@ function H(s, e) {
       gltfRef: w
     }), {
       id: o(),
-      name: u,
-      type: b,
+      name: g,
+      type: S,
       children: p,
-      gltfRef: i
+      gltfRef: u
     };
-  }, m = n.getDefaultScene() ?? t[0], g = [];
-  for (const i of m.listChildren())
-    g.push(l(i));
+  }, l = n.getDefaultScene() ?? t[0], h = [];
+  for (const u of l.listChildren())
+    h.push(i(u));
   const c = {
     id: o(),
-    name: m.getName() || "Scene",
+    name: l.getName() || "Scene",
     type: x.Scene,
-    children: g,
-    gltfRef: m
+    children: h,
+    gltfRef: l
   };
   return U(c), c;
 }
-class he {
+class me {
   state;
   io = null;
   onStateChange = null;
@@ -309,57 +309,57 @@ class he {
    */
   async loadBlob(e, n) {
     let t;
-    n && (t = /* @__PURE__ */ new Map(), n.getAllFiles().forEach((a) => {
-      t.set(a.name, a.blobUrl);
+    n && (t = /* @__PURE__ */ new Map(), n.getAllFiles().forEach((r) => {
+      t.set(r.name, r.blobUrl);
     })), this.setState({ isLoading: !0, error: null }), this.revokeTextureUrls();
     try {
-      const a = await this.initIOInstance(), r = await e.arrayBuffer(), h = new Uint8Array(r), o = new Uint32Array(r.slice(0, 4))[0] === 1179937895;
-      let l;
+      const r = await this.initIOInstance(), a = await e.arrayBuffer(), m = new Uint8Array(a), o = new Uint32Array(a.slice(0, 4))[0] === 1179937895;
+      let i;
       if (o)
-        l = await a.readBinary(h);
+        i = await r.readBinary(m);
       else {
-        const c = new TextDecoder().decode(h), i = JSON.parse(c), p = {}, b = async (f) => {
+        const c = new TextDecoder().decode(m), u = JSON.parse(c), p = {}, S = async (f) => {
           if (!f || f.startsWith("data:")) return null;
-          const u = f.split("/").pop() || f, S = decodeURIComponent(u), R = t?.get(S) || t?.get(u);
+          const g = f.split("/").pop() || f, b = decodeURIComponent(g), R = t?.get(b) || t?.get(g);
           if (R)
             try {
               const _ = await (await fetch(R)).arrayBuffer();
-              return p[u] = new Uint8Array(_), u;
+              return p[g] = new Uint8Array(_), g;
             } catch (w) {
-              console.warn(`Failed to fetch resource ${u}:`, w);
+              console.warn(`Failed to fetch resource ${g}:`, w);
             }
           return null;
         };
-        if (i.buffers)
-          for (const f of i.buffers) {
-            const u = await b(f.uri);
-            u && (f.uri = u);
+        if (u.buffers)
+          for (const f of u.buffers) {
+            const g = await S(f.uri);
+            g && (f.uri = g);
           }
-        if (i.images)
-          for (const f of i.images) {
-            const u = await b(f.uri);
-            u && (f.uri = u);
+        if (u.images)
+          for (const f of u.images) {
+            const g = await S(f.uri);
+            g && (f.uri = g);
           }
-        l = await a.readJSON({
-          json: i,
+        i = await r.readJSON({
+          json: u,
           resources: p
         });
       }
-      const m = H(l, this.texturePreviewUrls);
+      const l = H(i, this.texturePreviewUrls);
       this.setState({
-        document: l,
+        document: i,
         originalBlob: e,
-        sceneGraph: m,
+        sceneGraph: l,
         selectedNode: null,
         isDirty: !1,
         isLoading: !1,
         error: null
       });
-    } catch (a) {
-      const r = a instanceof Error ? a.message : "Failed to parse model";
+    } catch (r) {
+      const a = r instanceof Error ? r.message : "Failed to parse model";
       this.setState({
         isLoading: !1,
-        error: r
+        error: a
       });
     }
   }
@@ -399,10 +399,10 @@ class he {
       this.setState({ selectedNode: null });
       return;
     }
-    const n = (a, r) => {
-      if (a.id === r) return a;
-      for (const h of a.children) {
-        const o = n(h, r);
+    const n = (r, a) => {
+      if (r.id === a) return r;
+      for (const m of r.children) {
+        const o = n(m, a);
         if (o) return o;
       }
       return null;
@@ -483,9 +483,9 @@ class he {
         break;
       case "rotation": {
         K.set(
-          E.degToRad(t[0]),
-          E.degToRad(t[1]),
-          E.degToRad(t[2]),
+          A.degToRad(t[0]),
+          A.degToRad(t[1]),
+          A.degToRad(t[2]),
           "XYZ"
         ), M.setFromEuler(K), e.setRotation([M.x, M.y, M.z, M.w]);
         break;
@@ -527,33 +527,36 @@ class he {
     if (t) {
       switch (n) {
         case "KHR_materials_clearcoat": {
-          const r = t.createExtension(q).createClearcoat();
-          e.setExtension("KHR_materials_clearcoat", r);
+          const a = t.createExtension(q).createClearcoat();
+          e.setExtension("KHR_materials_clearcoat", a);
           break;
         }
         case "KHR_materials_transmission": {
-          const r = t.createExtension(X).createTransmission();
-          e.setExtension("KHR_materials_transmission", r);
+          const a = t.createExtension(X).createTransmission();
+          e.setExtension("KHR_materials_transmission", a);
           break;
         }
         case "KHR_materials_ior": {
-          const r = t.createExtension(G).createIOR();
-          e.setExtension("KHR_materials_ior", r);
+          const a = t.createExtension(G).createIOR();
+          e.setExtension("KHR_materials_ior", a);
           break;
         }
         case "KHR_materials_sheen": {
-          const r = t.createExtension(J).createSheen();
-          e.setExtension("KHR_materials_sheen", r);
+          const a = t.createExtension(J).createSheen();
+          e.setExtension("KHR_materials_sheen", a);
           break;
         }
         case "KHR_materials_volume": {
-          const r = t.createExtension(Y).createVolume();
-          e.setExtension("KHR_materials_volume", r);
+          const a = t.createExtension(Y).createVolume();
+          e.setExtension("KHR_materials_volume", a);
           break;
         }
       }
       this.setState({ isDirty: !0 });
     }
+  }
+  removeMaterialExtension(e, n) {
+    e.setExtension(n, null), this.setState({ isDirty: !0 });
   }
   /**
    * Apply changes and export as blob
@@ -578,26 +581,38 @@ class he {
    * Reset to original blob
    */
   async reset() {
-    if (this.state.originalBlob) {
-      this.setState({ isLoading: !0, error: null }), this.revokeTextureUrls();
-      try {
-        this.io || await this.initIOInstance();
-        const e = await this.state.originalBlob.arrayBuffer(), n = new Uint8Array(e), t = await this.io.readBinary(n), a = H(t, this.texturePreviewUrls);
-        this.setState({
-          document: t,
-          sceneGraph: a,
-          selectedNode: null,
-          isDirty: !1,
-          isLoading: !1,
-          error: null
-        });
-      } catch (e) {
-        const n = e instanceof Error ? e.message : "Failed to reset";
-        throw this.setState({
-          isLoading: !1,
-          error: n
-        }), e;
+    if (!this.state.originalBlob) return;
+    const e = this.state.selectedNode?.id ?? null;
+    this.setState({ isLoading: !0, error: null }), this.revokeTextureUrls();
+    try {
+      this.io || await this.initIOInstance();
+      const n = await this.state.originalBlob.arrayBuffer(), t = new Uint8Array(n), r = await this.io.readBinary(t), a = H(r, this.texturePreviewUrls);
+      let m = null;
+      if (e && a) {
+        const o = (i, l) => {
+          if (i.id === l) return i;
+          for (const h of i.children) {
+            const c = o(h, l);
+            if (c) return c;
+          }
+          return null;
+        };
+        m = o(a, e);
       }
+      this.setState({
+        document: r,
+        sceneGraph: a,
+        selectedNode: m,
+        isDirty: !1,
+        isLoading: !1,
+        error: null
+      });
+    } catch (n) {
+      const t = n instanceof Error ? n.message : "Failed to reset";
+      throw this.setState({
+        isLoading: !1,
+        error: t
+      }), n;
     }
   }
   /**
@@ -606,26 +621,26 @@ class he {
    * Use displayName for UI and name for API calls.
    */
   getAnimationTracks() {
-    return this.state.document ? this.state.document.getRoot().listAnimations().map((t, a) => {
-      let r = 0;
+    return this.state.document ? this.state.document.getRoot().listAnimations().map((t, r) => {
+      let a = 0;
       for (const o of t.listChannels()) {
-        const l = o.getSampler();
-        if (l) {
-          const m = l.getInput();
-          if (m) {
-            const g = m.getArray();
-            if (g && g.length > 0) {
-              const c = g[g.length - 1];
-              c > r && (r = c);
+        const i = o.getSampler();
+        if (i) {
+          const l = i.getInput();
+          if (l) {
+            const h = l.getArray();
+            if (h && h.length > 0) {
+              const c = h[h.length - 1];
+              c > a && (a = c);
             }
           }
         }
       }
-      const h = t.getName();
+      const m = t.getName();
       return {
-        name: Q(h || `Animation ${a}`),
-        displayName: h || `Animation ${a}`,
-        duration: r
+        name: Q(m || `Animation ${r}`),
+        displayName: m || `Animation ${r}`,
+        duration: a
       };
     }) : [];
   }
@@ -637,26 +652,26 @@ class he {
     if (!this.state.document) return [];
     const e = this.state.document.getRoot(), n = [];
     for (const t of e.listMeshes()) {
-      const a = t.getName() || "Mesh", h = t.getExtras()?.targetNames ?? [], o = t.listPrimitives();
+      const r = t.getName() || "Mesh", m = t.getExtras()?.targetNames ?? [], o = t.listPrimitives();
       if (o.length === 0) continue;
-      const m = o[0].listTargets();
-      if (m.length === 0) continue;
-      let g = [];
+      const l = o[0].listTargets();
+      if (l.length === 0) continue;
+      let h = [];
       for (const c of e.listNodes())
         if (c.getMesh() === t) {
-          const i = c.getWeights();
-          if (i.length > 0) {
-            g = i;
+          const u = c.getWeights();
+          if (u.length > 0) {
+            h = u;
             break;
           }
         }
-      for (let c = 0; c < m.length; c++) {
-        const i = h[c] || `BlendShape ${c}`;
+      for (let c = 0; c < l.length; c++) {
+        const u = m[c] || `BlendShape ${c}`;
         n.push({
-          name: i,
-          meshName: a,
+          name: u,
+          meshName: r,
           index: c,
-          defaultWeight: g[c] ?? 0
+          defaultWeight: h[c] ?? 0
         });
       }
     }
@@ -664,10 +679,10 @@ class he {
   }
 }
 export {
-  he as InspectorAPI,
+  me as InspectorAPI,
   Z as MaterialExtension,
   x as SceneGraphNodeType,
-  ne as estimateGeometryVRAM,
+  re as estimateGeometryVRAM,
   se as estimateTextureVRAM,
-  me as formatBytes
+  ue as formatBytes
 };

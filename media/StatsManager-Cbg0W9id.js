@@ -1,4 +1,4 @@
-import "./index-1fHvDm8K.js";
+import "./index-Ba1b9g-o.js";
 const p = {
   logsPerSecond: 5,
   samplesLog: 100,

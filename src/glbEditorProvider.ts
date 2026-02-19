@@ -51,7 +51,7 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
         const sourceDir = vscode.Uri.joinPath(document.uri, '..');
         const baseName = document.uri.path.split('/').pop()!.replace(/\.(glb|gltf)$/i, '');
         const ext = document.uri.path.endsWith('.gltf') ? '.gltf' : '.glb';
-        const outputUri = vscode.Uri.joinPath(sourceDir, `${baseName}_optimized${ext}`);
+        const outputUri = vscode.Uri.joinPath(sourceDir, `${baseName}_modified${ext}`);
         await vscode.workspace.fs.writeFile(outputUri, new Uint8Array(data));
         vscode.window.showInformationMessage(`Saved to ${outputUri.fsPath}`);
       }

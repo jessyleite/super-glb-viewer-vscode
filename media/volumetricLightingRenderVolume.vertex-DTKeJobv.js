@@ -1,4 +1,4 @@
-import { S as t } from "./BabylonAdapter-BsjTUjco.js";
+import { S as t } from "./BabylonAdapter-DXDkMOqC.js";
 const e = "volumetricLightingRenderVolumeVertexShader", o = `#include<sceneUboDeclaration>
 #include<meshUboDeclaration>
 attribute position : vec3f;varying vWorldPos: vec4f;@vertex

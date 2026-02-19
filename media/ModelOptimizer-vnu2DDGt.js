@@ -1,5 +1,5 @@
-import { P as T, a as qA, A as hC, B as EI, R as oI, b as pg, S as NC, T as WI, c as lg, E as Xg, M as mg, C as HC, D as kC, i as MC, d as qg, K as LC } from "./gltfIO-Ce7kfg7O.js";
-import { eO as JC } from "./index-1fHvDm8K.js";
+import { P as T, a as qA, A as hC, B as EI, R as oI, b as pg, S as NC, T as WI, c as lg, E as Xg, M as mg, C as HC, D as kC, i as MC, d as qg, K as LC } from "./gltfIO-hi-8ve8v.js";
+import { eO as JC } from "./index-Ba1b9g-o.js";
 const ZI = {
   /** Maximum texture dimension (width/height) after resize */
   maxTextureSize: 1024,
@@ -1460,7 +1460,7 @@ var pI;
 pI.LANCZOS3;
 const eA = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string";
 eA && (async () => {
-  const { createRequire: i } = await import("./index-1fHvDm8K.js").then((h) => h.f9);
+  const { createRequire: i } = await import("./index-Ba1b9g-o.js").then((h) => h.f9);
   var F = i(import.meta.url);
   const R = F("node:path"), { fileURLToPath: D } = F("node:url");
   R.dirname(D(import.meta.url));

@@ -1,4 +1,4 @@
-import { S as i } from "./BabylonAdapter-BsjTUjco.js";
+import { S as i } from "./BabylonAdapter-DXDkMOqC.js";
 const e = "volumetricLightingRenderVolumePixelShader", t = `#include<__decl__sceneFragment>
 uniform mat4 invViewProjection;uniform vec3 lightDir; 
 uniform vec2 outputTextureSize;uniform vec4 extinctionPhaseG;uniform vec3 lightPower;uniform vec2 textureRatio;uniform sampler2D depthTexture;varying vec4 vWorldPos;float henyeyGreenstein(float g,float cosTheta) {float denom=1.0+g*g-2.0*g*cosTheta;return 1.0/(4.0*3.14159265)*(1.0-g*g)/(denom*sqrt(max(denom,0.0)));}

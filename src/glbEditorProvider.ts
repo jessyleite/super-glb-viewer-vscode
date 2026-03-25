@@ -88,7 +88,7 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource} 'nonce-${nonce}' 'unsafe-eval'; img-src ${webview.cspSource} data: blob: https:; font-src ${webview.cspSource}; connect-src ${webview.cspSource} data: blob: https:; worker-src ${webview.cspSource} blob:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource} 'nonce-${nonce}' 'unsafe-eval'; img-src ${webview.cspSource} data: blob: https:; font-src ${webview.cspSource}; connect-src ${webview.cspSource} data: blob: https:; worker-src ${webview.cspSource} blob:; frame-src ${webview.cspSource} blob:;">
   <script nonce="${nonce}">
     // Polyfill Node.js globals before any modules load
     window.process = { env: { NODE_ENV: 'production' } };

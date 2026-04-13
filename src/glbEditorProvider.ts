@@ -54,6 +54,8 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
         const outputUri = vscode.Uri.joinPath(sourceDir, `${baseName}_modified${ext}`);
         await vscode.workspace.fs.writeFile(outputUri, new Uint8Array(data));
         vscode.window.showInformationMessage(`Saved to ${outputUri.fsPath}`);
+      } else if (message.type === 'openExternal' && typeof message.url === 'string') {
+        await vscode.env.openExternal(vscode.Uri.parse(message.url));
       }
     });
   }
@@ -88,7 +90,7 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource} 'nonce-${nonce}' 'unsafe-eval'; img-src ${webview.cspSource} data: blob: https:; font-src ${webview.cspSource}; connect-src ${webview.cspSource} data: blob: https:; worker-src ${webview.cspSource} blob:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource} 'nonce-${nonce}' 'unsafe-eval'; img-src ${webview.cspSource} data: blob: https:; font-src ${webview.cspSource}; connect-src ${webview.cspSource} data: blob: https:; worker-src ${webview.cspSource} blob:; frame-src ${webview.cspSource} blob:;">
   <script nonce="${nonce}">
     // Polyfill Node.js globals before any modules load
     window.process = { env: { NODE_ENV: 'production' } };
@@ -98,6 +100,19 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
 
     // VS Code API for messaging between webview and extension
     const vscodeApi = acquireVsCodeApi();
+
+    // Polyfill window.open — VS Code webviews run in a sandboxed iframe
+    // without 'allow-popups'. Route external URLs through the extension host.
+    Object.defineProperty(window, 'open', {
+      configurable: true,
+      writable: true,
+      value: function(url) {
+        if (typeof url === 'string' && /^https?:/i.test(url)) {
+          vscodeApi.postMessage({ type: 'openExternal', url });
+        }
+        return null;
+      }
+    });
 
     // Polyfill showSaveFilePicker — not available in VS Code webviews.
     // The viewer library calls this to export files. We intercept the blob
@@ -154,6 +169,7 @@ export class GlbEditorProvider implements vscode.CustomReadonlyEditorProvider {
         params: {
           displayFooterLinks: false,
           enableAddModels: false,
+          enableReviewPrompt: true
         }
       })
     );

@@ -1,6 +1,8 @@
 # Super GLB Viewer for VS Code
 
-View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engine viewer supporting Unity, Three.js, Babylon.js, and PlayCanvas.
+**Super GLB Viewer** is a VS Code extension for opening, inspecting, editing, and re-exporting `.glb` 3D models, with four interchangeable rendering engines: Unity, Three.js, Babylon.js, and PlayCanvas.
+
+> **Prefer the browser?** The same engine runs as a free web app, no install needed: **[Super GLB Viewer (web)](https://jessyleite.dev/super-glb-viewer/)**
 
 <p>
   <img src="1.png" width="32%" alt="View and Inspect your GLB files" />
@@ -10,50 +12,65 @@ View GLB and GLTF 3D model files directly in VS Code — powered by a multi-engi
 
 ## Features
 
-- **Open GLB/GLTF files** directly in VS Code as a custom editor
-- **Multiple rendering engines** — switch between Unity, Three.js, Babylon.js, and PlayCanvas
-- **WebGL2 and WebGPU** backends
-- **Animations** — play/pause, seek, track selection, and speed control
-- **Blend shapes / morph targets** with adjustable weights
-- **Inspector** — browse the scene graph, edit materials (PBR, clearcoat, transmission, sheen, volume), transforms, and lights
-- **Model comparison** — split view with synchronized camera and stat deltas
-- **Optimization** — mesh compression and KTX2 texture compression
-- **Export** — download your model (including edits) as GLB
-- **Share** — generate a shareable link to your model
-- **Environment lighting** — load custom HDR files, adjust exposure and tonemapping
-- **Stats panel** — vertices, triangles, meshes, materials, textures, and VRAM usage
-- **Fully offline** — all processing happens locally, no data leaves your machine (except when using the Share feature, which uploads your model to generate a link)
+- Custom editor for `.glb` files
+- Four engines: Unity, Three.js, Babylon.js, PlayCanvas
+- WebGL2 and WebGPU backends
+- Animation playback with seek, track selection, and speed control
+- Blend shapes / morph targets with per-target weights
+- Inspector for the scene graph, materials (PBR, clearcoat, transmission, sheen, volume), transforms, and lights
+- Side-by-side model comparison with synchronized camera and stat deltas
+- Mesh compression and KTX2 texture compression
+- Export edited models back to `.glb`
+- Shareable links (uploads the model to generate the URL)
+- Custom HDR environments with exposure and tonemapping
+- Stats panel: vertices, triangles, meshes, materials, textures, VRAM
+- All processing is local. The Share feature is the only path that sends data off-machine.
 
 ## Supported Formats
 
 | Format | Extension | Notes |
 |--------|-----------|-------|
-| GLB | `.glb` | Self-contained binary glTF
+| GLB | `.glb` | Binary glTF, single file |
 
 ## Usage
 
 1. Install the extension
-2. Open any `.glb` file in VS Code
-3. The 3D viewer opens automatically
+2. Open a `.glb` file
+3. The viewer opens automatically
 
 ### Camera Controls
 
 | Action | Mouse | Keyboard |
 |--------|-------|----------|
 | Orbit | Left drag | Arrow keys / WASD |
-| Pan | Right drag | — |
+| Pan | Right drag | (none) |
 | Zoom | Scroll wheel | `+` / `-` |
 
 ### Switching Engines
 
-Use the engine selector in the viewer toolbar to switch between Three.js, Babylon.js, and PlayCanvas. Your camera position, environment, and settings are preserved across switches.
+Use the engine selector in the toolbar to swap between Unity, Three.js, Babylon.js, and PlayCanvas. Camera position, environment, and settings carry over.
 
 ## Requirements
 
 - VS Code 1.80.0 or later
 
+## Support & Community
+
+Questions, bugs, or feature requests? The **[Discord](https://discord.com/invite/YCysRXST)** is the fastest way to reach me.
+
 ## License
 
-This extension is licensed under the [MIT License](LICENSE).
+MIT. See [LICENSE](LICENSE).
 
-The embedded viewer library ([super-glb-viewer](https://github.com/jessyleite/super-glb-viewer)) is separately licensed — see `media/LICENSE` for details.
+The embedded viewer library ([super-glb-viewer](https://github.com/jessyleite/super-glb-viewer)) ships under its own license. See `media/LICENSE`.
+
+---
+
+## More 3D Tools
+
+Other tools I build for 3D and glTF workflows:
+
+- **[Texture Master](https://jessyleite.dev/posts/texture-master/)**: all-in-one texture toolkit for Blender
+- **[Autoskin](https://jessyleite.dev/posts/new-automatic-skinning-method-blender/)**: innovative voxel heat-diffusion automatic skinning for Blender
+
+Built by **[Jessy Leite](https://jessyleite.dev)** · [@jessylte](https://x.com/jessylte)
